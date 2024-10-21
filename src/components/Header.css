@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background:rgb(36, 36, 36);
+    width: 100dvw;  
+    height: 7dvh;
+    color: rgb(231, 231, 231);
+    position: absolute;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 1rem;
+
+}
+
+ul a {
+    text-decoration:  none;
+    color: rgb(231, 231, 231);
+    margin: 0 1rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    background: rgb(44, 44, 44);
+}
+
+ul a:hover {
+    background: rgb(71, 71, 71);
+}
