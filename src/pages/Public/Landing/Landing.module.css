@@ -1,6 +1,6 @@
 .body {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -8,4 +8,14 @@
 
 .panel {
     width: 30%;
+}
+
+.panel img {
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    height: 600px;
+}
+
+.panel {
+    line-height: 3.5rem;
 }

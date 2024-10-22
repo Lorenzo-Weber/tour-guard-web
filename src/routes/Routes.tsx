@@ -14,10 +14,10 @@ const RoutesFunction = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/landing" replace />} />
       <Route path="/login" element={<Login />} />
       <Route path="/landing" element={<Landing />} />
-      <Route path="/contato" element={<Contato />} /> {/* Nova rota de Contato */}
+      <Route path="/contato" element={<Contato />} /> 
 
       {managerRoutes.map((route, index) => (
         <Route key={index} path={route.path} element={route.view} />
