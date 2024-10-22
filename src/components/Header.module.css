@@ -9,7 +9,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 4rem;
+    padding: 1rem 10rem;
     background:rgb(36, 36, 36);
     width: 100vw;  
     height: 10%;
@@ -43,4 +43,26 @@ ul a:hover {
 
 .logo {
     width: 150px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilizando a barra de scroll para Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 14px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888888; /* Cor da parte que pode ser arrastada */
+    border-radius: 10px; /* Arredondar as bordas */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Cor ao passar o mouse */
+}
+
+::-webkit-scrollbar-track {
+    background: #743188; /* Cor do fundo da barra de rolagem */
 }
