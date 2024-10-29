@@ -1,0 +1,50 @@
+.body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.panel {
+    width: 30%;
+}
+
+.panel img {
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    height: 400px;
+    box-shadow: 1px 1px 10px 2px rgb(236, 142, 255);
+}
+
+.panel {
+    line-height: 3.5rem;
+}
+
+.infos {
+    width: 40%;
+    margin: 3rem 10rem 5rem 10rem;
+}
+
+.infos h1 {
+    margin: 1rem;
+}
+
+.infos p {
+    font-size: 1.2rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin: 0.6rem;
+}
+
+.title a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+span.title_style {
+    border-bottom: 3px solid blueviolet;
+}

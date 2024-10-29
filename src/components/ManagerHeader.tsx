@@ -11,7 +11,7 @@ const ManagerHeader = () => {
           <nav>
             <Link to="/landing"><img src={logo} className={styles.logo} alt=''/></Link>
             <ul>
-                <Link to="/Account"> <li> <FontAwesomeIcon icon={faUser} />  </li></Link>  
+                <Link to="/Manager/Account"> <li> <FontAwesomeIcon icon={faUser} />  </li></Link>  
             </ul>
           </nav>
         </header>
