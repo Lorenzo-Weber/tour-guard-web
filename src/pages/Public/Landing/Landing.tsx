@@ -14,12 +14,12 @@ const Landing = () => {
                     para monitoramento de minas, garantindo uma
                     experiência turística segura e inesquecível.
                 </h1>
-                <div className={s.panel}><img src={landing} alt=""/></div>
+                <div className={s.panel}><img src={landing} alt="" /></div>
             </div>
-            
+
             <div className={s.infos} id="sobre">
                 <div className={s.title}>
-                    <i className='fa-regular fa-adress-card'/>
+                    <i className='fa-regular fa-adress-card' />
                     <h1>Sobre a Tour Guard</h1>
                 </div>
                 <p>
