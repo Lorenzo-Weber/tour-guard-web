@@ -1,4 +1,7 @@
-const updateManager = () => {
+const UpdateManager = () => {
+  return (
+    <div></div>
+  )
 };
 
-export default updateManager;
+export default UpdateManager;

@@ -1,5 +1,7 @@
-const searchManager = () => {
-    
+const SearchManager = () => {
+    return (
+      <div></div>
+    )
 };
 
-export default searchManager;
+export default SearchManager;

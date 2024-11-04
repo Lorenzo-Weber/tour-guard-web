@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Header from '../../../components/Header';
 
-import styles from './Login.module.css';
+import styles from './LoginAdm.module.css';
 
-const loginAdm = () => {
+const LoginAdm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -54,4 +54,4 @@ const loginAdm = () => {
   );
 };
 
-export default loginAdm;
+export default LoginAdm;
