@@ -1,4 +1,4 @@
-header{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,17 +16,38 @@ nav {
     color: rgb(231, 231, 231);
 }
 
-.button {
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 1rem;
+
+}
+
+ul a {
     text-decoration:  none;
     color: rgb(231, 231, 231);
+    margin: 0 1rem;
     transition: all 0.3s ease-in-out;
     border-radius: 15px;
     background: rgb(44, 44, 44);
-    padding: 1rem;
 }
 
-.button:hover {
+ul a:hover {
     background: rgb(71, 71, 71);
+}
+
+.addMine {
+    color: aliceblue;
+    background-color: blueviolet;
+}
+
+.addMine:hover {
+    background-color: darkviolet;
 }
 
 .logo {

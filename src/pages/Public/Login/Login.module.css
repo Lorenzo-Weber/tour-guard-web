@@ -36,8 +36,9 @@
 
 .formContainer button {
   padding: 10px 20px;
+  width: 100%;
   margin: auto;
-  background-color: #3a3a3a;
+  background-color: blueviolet;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -47,7 +48,7 @@
 }
 
 .formContainer button:hover {
-  background-color: #001f3f;
+  background-color: darkviolet;
 }
 
 .body {
