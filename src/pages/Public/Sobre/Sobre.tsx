@@ -5,7 +5,7 @@ import s from './Sobre.module.css';
 
 const Sobre = () => {
     return (
-        <div>
+        <body>
             <Header />
             <div className={s.infos} id="sobre">
                 <div className={s.title}>
@@ -41,7 +41,7 @@ const Sobre = () => {
                     Contrate a Tour Guard e conte com uma solução inovadora que une eficiência e proteção. Junte-se a nós e faça da segurança uma prioridade para seus turistas!
                 </p>
             </div>
-        </div>
+        </body>
     );
 };
 

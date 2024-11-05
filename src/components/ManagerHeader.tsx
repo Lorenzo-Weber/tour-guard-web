@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Adicione esta linha
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import styles from './ManagerHeader.module.css';
 import logo from "../assets/logo.png";
 import { faUser } from '@fortawesome/free-solid-svg-icons';

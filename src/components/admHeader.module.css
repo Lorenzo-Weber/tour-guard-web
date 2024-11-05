@@ -16,28 +16,16 @@ nav {
     color: rgb(231, 231, 231);
 }
 
-nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-nav ul li {
-    list-style: none;
-    padding: 1rem;
-
-}
-
-ul a {
+.button {
     text-decoration:  none;
     color: rgb(231, 231, 231);
-    margin: 0 1rem;
     transition: all 0.3s ease-in-out;
     border-radius: 15px;
     background: rgb(44, 44, 44);
+    padding: 1rem;
 }
 
-ul a:hover {
+.button:hover {
     background: rgb(71, 71, 71);
 }
 

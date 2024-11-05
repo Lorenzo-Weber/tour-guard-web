@@ -7,10 +7,10 @@ import Sobre from "../pages/Public/Sobre/Sobre";
 
 import HomeManager from "../pages/Manager/Home/Home";
 import DashboardManager from "../pages/Manager/Dashboard/Dashboard";
-import LoginAdm from "../pages/adm/LoginAdm/LoginAdm";
-import UpdateManager from "../pages/adm/UpdateManager/UpdateManager";
-import AddManager from "../pages/adm/AddManager/AddManager";
-import SearchManager from "../pages/adm/SearchManager/SearchManager";
+import LoginAdm from "../pages/adm/loginAdm/loginAdm";
+import UpdateManager from "../pages/adm/updateManager/updateManager";
+import AddManager from "../pages/adm/addManager/addManager";
+import InfoManager from "../pages/adm/infoManager/infoManager";
 
   const RoutesFunction = () => {
     const managerRoutes = [
@@ -39,7 +39,7 @@ import SearchManager from "../pages/adm/SearchManager/SearchManager";
       },
       {
         path: "/adm/infoManager",
-        view: <SearchManager />
+        view: <InfoManager />
       },
       {
         path: "/adm/updateInfo",

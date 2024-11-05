@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../../../components/Header';
-
-import styles from './LoginAdm.module.css';
+import styles from './loginAdm.module.css';
 
 const LoginAdm = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +14,6 @@ const LoginAdm = () => {
 
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
       <div className={styles.body}>
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit} className={styles.form}>

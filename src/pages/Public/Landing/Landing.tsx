@@ -12,7 +12,7 @@ const Landing = () => {
                 <div className={s.panel}>
                     <div className={s.column}>
                         <h1>
-                            <span className={s.title_style}>Bem-vindo à Tour Guard</span>  – tecnologia avançada em monitoramento de minas históricas, garantindo uma experiência turística segura, informativa e inesquecível. Com a Tour Guard, cada visita se torna uma jornada tranquila, aliando segurança e inovação para que todos possam explorar esse patrimônio com confiança.
+                            <span className={s.title_style}>Bem-vindo à Tour Guard</span>  – tecnologia avançada em monitoramento de minas históricas, garantindo uma experiência turística segura, informativa e inesquecível.
                         </h1>
                         <div>
                             <Link to="/contato" className={s.button}>Peça Orçamento</Link>
