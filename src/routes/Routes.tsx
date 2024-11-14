@@ -9,7 +9,7 @@ import HomeManager from "../pages/Manager/Home/Home";
 import DashboardManager from "../pages/Manager/Dashboard/Dashboard";
 import InfoManager from "../pages/adm/infoManager/infoManager";
 import AddManager from "../pages/adm/AddManager/AddManager";
-import UpdateManager from "../pages/adm/UpdateManager/UpdateManager";
+import UpdateMine from "../pages/adm/UpdateMine/UpdateMine";
 import PrivateRoute from "./privateRoute";
 import { useAuth } from "../Hooks/AuthContext";
 import { ROLE } from "./roles";
@@ -41,8 +41,8 @@ import AddMineForm from "../pages/adm/AddMineForm/AddMineForm";
         view: <AddManager />
       },
       {
-        path: "/admin/updateInfo",
-        view: <UpdateManager />
+        path: "/admin/updateMine",
+        view: <UpdateMine />
       },
       {
         path: "/admin/addMine",

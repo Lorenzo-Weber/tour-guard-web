@@ -5,6 +5,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Table from 'react-bootstrap/Table';
 import { useEffect, useState } from 'react';
 import api from '../../../services/api';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface IMine {
   manager: string;
@@ -65,7 +67,6 @@ const InfoManager = () => {
               id="searchBar" 
               placeholder="Buscar..."
               className={s.input}
-              // A lógica de setar e capturar o valor do input pode ser implementada aqui também.
             />
           </label>
           <button type="submit" className={s.button}>Buscar</button>
@@ -77,6 +78,8 @@ const InfoManager = () => {
               <th>Manager</th>
               <th>Mine</th>
               <th>Location</th>
+              <th>Editar</th>
+              <th>Apagar</th>
             </tr>
           </thead>
           <tbody>
@@ -86,6 +89,8 @@ const InfoManager = () => {
                 <td>{mine.manager}</td>
                 <td>{mine.name}</td>
                 <td>{mine.location}</td>
+                <td> <FontAwesomeIcon icon={ faPenToSquare } /> </td>
+                <td> <FontAwesomeIcon icon={faTrash} /> </td>
               </tr>
             ))}
           </tbody>
