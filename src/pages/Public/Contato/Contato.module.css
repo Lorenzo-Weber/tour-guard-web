@@ -1,16 +1,11 @@
 .formContainer {
-  background-color: #2f2f2f;
-  /* Cor grafite */
-
   padding: 20px;
   border-radius: 10px;
-  /* Bordas arredondadas */
   width: 100%;
   max-width: 500px;
+  height: 400px;
   margin: 0 auto;
-  /* Centraliza a caixa no centro da página */
   color: #fff;
-  /* Cor do texto */
 }
 
 .formContainer label {
@@ -28,9 +23,7 @@
   border: 1px solid #ccc;
   font-size: 16px;
   background-color: #fff;
-  /* Cor do fundo dos campos */
   color: #000;
-  /* Cor do texto dos campos */
 }
 
 .formContainer button {
