@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import Header from '../../../components/Header';
 
 import styles from './Login.module.css';
+import { useAuth } from '../../../Hooks/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { signIn } = useAuth();
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    try {
+      await signIn(email, password);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -43,7 +52,7 @@ const Login = () => {
                 required
               />
             </div>
-            <button type="submit">Fazer Login</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)}>Fazer Login</button>
           </form>
         </div>
       </div>
