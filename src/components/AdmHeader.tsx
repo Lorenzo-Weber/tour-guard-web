@@ -15,7 +15,8 @@ const AdmHeader = () => {
       <nav>
         <Link to="/admin"><img src={logo} className={s.logo} alt=''/></Link>
         <ul>
-            <Link to="/admin/addManager" className={s.addMine}><li>Adicionar mina</li></Link>
+            <Link to="/admin/addMine" className={s.addMine}><li>Adicionar mina</li></Link>
+            <Link to="/admin/addManager" className={s.addMine}><li>Adicionar gerenciador</li></Link>
             <Dropdown>
                   <Dropdown.Toggle>
                     

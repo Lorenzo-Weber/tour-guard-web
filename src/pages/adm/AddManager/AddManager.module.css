@@ -1,0 +1,62 @@
+.formContainer {
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #333; /* Fundo escuro para o formulário */
+    color: #fff;
+  }
+  
+  .formContainer label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ccc;
+  }
+  
+  .formContainer input,
+  .formContainer button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .formContainer input {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .formContainer button {
+    background-color: blueviolet;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .formContainer button:hover {
+    background-color: darkviolet;
+  }
+  
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* Alterado para usar 100% da altura da tela */
+    background-color: #222; /* Fundo escuro para a página */
+  }
+  
+  .messageInput {
+    resize: none;
+  }
+  
+  .input {
+    outline: none;
+  }
+  

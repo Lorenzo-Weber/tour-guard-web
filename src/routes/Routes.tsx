@@ -45,7 +45,7 @@ import AddMineForm from "../pages/adm/AddMineForm/AddMineForm";
         view: <UpdateManager />
       },
       {
-        path: "/admin/add-mine",
+        path: "/admin/addMine",
         view: <AddMineForm />
       }
     ]
