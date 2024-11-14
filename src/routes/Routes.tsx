@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Login from "../pages/Public/Login/Login";
 import Account from "../pages/Manager/Account/Account";
 import Landing from "../pages/Public/Landing/Landing"; 
@@ -7,10 +7,13 @@ import Sobre from "../pages/Public/Sobre/Sobre";
 
 import HomeManager from "../pages/Manager/Home/Home";
 import DashboardManager from "../pages/Manager/Dashboard/Dashboard";
-import LoginAdm from "../pages/adm/loginAdm/loginAdm";
-import UpdateManager from "../pages/adm/updateManager/updateManager";
-import AddManager from "../pages/adm/addManager/addManager";
 import InfoManager from "../pages/adm/infoManager/infoManager";
+import AddManager from "../pages/adm/AddManager/AddManager";
+import UpdateManager from "../pages/adm/UpdateManager/UpdateManager";
+import PrivateRoute from "./privateRoute";
+import { useAuth } from "../Hooks/AuthContext";
+import { ROLE } from "./roles";
+import AddMineForm from "../pages/adm/AddMineForm/AddMineForm";
 
   const RoutesFunction = () => {
     const managerRoutes = [
@@ -30,39 +33,61 @@ import InfoManager from "../pages/adm/infoManager/infoManager";
 
     const admRoutes = [
       {
-        path: "/adm",
-        view: <LoginAdm />,
+        path: "/admin",
+        view: <InfoManager />,
       },
       {
-        path: "/adm/addManager",
+        path: "/admin/addManager",
         view: <AddManager />
       },
       {
-        path: "/adm/infoManager",
-        view: <InfoManager />
+        path: "/admin/updateInfo",
+        view: <UpdateManager />
       },
       {
-        path: "/adm/updateInfo",
-        view: <UpdateManager />
+        path: "/admin/add-mine",
+        view: <AddMineForm />
       }
     ]
 
     return (
       <Routes>
         <Route path="/" element={<Navigate to="/landing" replace />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={
+          <RedirectLogin>
+            <Login />
+          </RedirectLogin>
+          } />
         <Route path="/landing" element={<Landing />} />
         <Route path="/contato" element={<Contato />} /> 
         <Route path="/sobre" element={<Sobre />} />
 
         {managerRoutes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.view} />
+          <Route key={index} path={route.path} element={
+            <PrivateRoute roles={"manager"}>
+              {route.view}
+            </PrivateRoute>
+          } />
         ))}
         {admRoutes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.view} />
+          <Route key={index} path={route.path} element={
+            <PrivateRoute roles={"admin"}>
+              {route.view}
+            </PrivateRoute>
+          } />
         ))}
       </Routes>
     );
   };
+
+  const RedirectLogin: React.FC<{ children: JSX.Element }> = ({ children }) => {
+    const { authData } = useAuth()
+    let location = useLocation()
+    if (!!authData?.token && !!authData?.role && location.pathname === '/login') {
+      return <Navigate to={ROLE[authData.role]} replace />
+    } else {
+      return children
+    }
+  }
 
   export default RoutesFunction;
