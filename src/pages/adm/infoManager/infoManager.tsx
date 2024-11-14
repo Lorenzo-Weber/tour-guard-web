@@ -5,11 +5,12 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Table from 'react-bootstrap/Table';
 import { useEffect, useState } from 'react';
 import api from '../../../services/api';
+import { Form } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface IMine {
-  manager: string;
+  manager: any;
   name: string;
   location: string;
 }
@@ -22,6 +23,7 @@ interface IUser {
 const InfoManager = () => {
   const [mines, setMines] = useState<IMine[] | null>(null);
   const [user, setUser] = useState<IUser | null>(null);
+  const [managers, setManagers] = useState<any[] | null>(null);
 
   useEffect(() => {
     async function loadData() {
@@ -36,16 +38,29 @@ const InfoManager = () => {
   }, []);
 
   useEffect(() => {
-    async function loadData() {
+    async function loadManagers() {
+      try {
+        const { data } = await api.get('/admin/managers')
+        setManagers(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    loadManagers();
+  }, [])
+
+  useEffect(() => {
+    async function loadMines() {
       try {
         const {data} = await api.get('/admin/mines')
         setMines(data)
+        console.log(data)
       } catch (error) {
         console.error(error)
       }
     } 
 
-    loadData();
+    loadMines();
   }, []);
   
 
@@ -62,12 +77,12 @@ const InfoManager = () => {
         <form className={s.search} onSubmit={handleSearch}>
           <label htmlFor="searchBar" className={s.searchBar}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <input 
-              type="text" 
-              id="searchBar" 
-              placeholder="Buscar..."
-              className={s.input}
-            />
+            <Form.Select>
+              <option>Selecione um gerente</option>
+              {managers?.map((manager, index) => (
+                <option key={index}>{manager.user.full_name}</option>
+              ))}
+            </Form.Select>
           </label>
           <button type="submit" className={s.button}>Buscar</button>
         </form>
@@ -86,7 +101,7 @@ const InfoManager = () => {
             {mines?.map((mine, index) => (
               <tr key={index}>
                 <td>{index}</td>
-                <td>{mine.manager}</td>
+                <td>{mine.manager.user.full_name}</td>
                 <td>{mine.name}</td>
                 <td>{mine.location}</td>
                 <td> <FontAwesomeIcon icon={ faPenToSquare } /> </td>

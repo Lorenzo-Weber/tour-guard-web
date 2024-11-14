@@ -30,7 +30,6 @@ const AuthProvider: React.FC<any> = ({ children }) => {
     const is_token_valid = localStorage.getItem('@tourguard:is_token_valid') ?? 'false'
     const role = localStorage.getItem('@tourguard:role') as IRoles
     if (role && token && is_token_valid === 'true') {
-      console.log('!token', token)
       api.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(token)}`
       return {
         token: JSON.parse(token),
@@ -47,13 +46,11 @@ const AuthProvider: React.FC<any> = ({ children }) => {
         email,
         password,
       })
-      console.log(data)
 
       const roles = data.roles
 
       const { token } = data.token
       const role = roles[0]
-      console.log('token', token)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       const userData = {
         is_token_valid: 'true',

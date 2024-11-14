@@ -8,8 +8,7 @@ const LoginAdm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Lógica de autenticação pode ser adicionada aqui
-    console.log('Email:', email);
-    console.log('Senha:', password);
+    
   };
 
   return (
