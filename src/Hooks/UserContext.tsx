@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react"; 
+import React, { createContext, useContext, useState } from "react";
 
 interface IUser {
   id: string;
@@ -23,12 +23,12 @@ const UserProvider: React.FC<any> = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
-}
+};
 
 function useUser(): IUserContextData {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 }

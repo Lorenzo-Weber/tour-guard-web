@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import s from './UpdateMine.module.css'; // Importando o módulo CSS
+import React, { useEffect, useState } from "react";
+import s from "./UpdateMine.module.css"; // Importando o módulo CSS
 import Header from "../../../components/AdmHeader";
-
+import api from "../../../services/api";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateMine = () => {
   const [name, setName] = useState("");
@@ -9,14 +10,57 @@ const UpdateMine = () => {
   const [facebook, setFacebook] = useState("");
   const [instagram, setInstagram] = useState("");
   const [type, setType] = useState("");
-  const [manager, setManager] = useState("");
+  const [manager, setManager] = useState<any>();
   const [description, setDescription] = useState("");
   const [qrCode, setQrCode] = useState("");
 
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const { data } = await api.get(`admin/mines/${id}`);
+        setName(data.name);
+        setLocation(data.location);
+        setFacebook(data.facebook);
+        setInstagram(data.instagram);
+        setDescription(data.description);
+        setType(data.type);
+
+        const response = await api.get(`/admin/manager/${data.admin_id}`);
+
+        setManager(response.data.user);
+
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    loadData();
+  }, [id]);
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Aqui você pode fazer o que precisar com os dados, tipo mandar para a API ou salvar no banco
 
+    const model = {
+      name,
+      location,
+      facebook,
+      instagram,
+      description,
+      type,
+      // admin_id: 1,
+    };
+
+    try {
+      api.put(`/admin/mines/${id}`, model);
+
+      navigate("/admin");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -72,16 +116,16 @@ const UpdateMine = () => {
               required
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="manager">Gerente:</label>
             <input
               id="manager"
               type="text"
-              value={manager}
+              value={manager?.full_name}
               onChange={(e) => setManager(e.target.value)}
               required
             />
-          </div>
+          </div> */}
           <div>
             <label htmlFor="description">Descrição:</label>
             <textarea

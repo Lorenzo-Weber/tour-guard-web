@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const apiUrl = isProd
   ? "https://tour-guard-b28d110234e5.herokuapp.com"
-  : "http://localhost:3000";
+  : "http://localhost:3333";
 
 const api = axios.create({
   baseURL: apiUrl,

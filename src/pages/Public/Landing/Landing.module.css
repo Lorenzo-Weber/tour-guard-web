@@ -1,6 +1,6 @@
-* {
+/* * {
   overflow-y: hidden;
-}
+} */
 
 .body {
   width: 100vw;
@@ -33,7 +33,7 @@ span.title_style {
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
-  transition: all 0.2s ease-in-out; 
+  transition: all 0.2s ease-in-out;
 }
 
 .button:hover {
