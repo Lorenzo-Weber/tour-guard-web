@@ -58,20 +58,19 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Estilizando a barra de scroll para Webkit (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 14px; /* Largura da barra de rolagem */
+    width: 14px; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #888888; /* Cor da parte que pode ser arrastada */
-    border-radius: 10px; /* Arredondar as bordas */
+    background-color: #888888; 
+    border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Cor ao passar o mouse */
+    background-color: #555; 
 }
 
 ::-webkit-scrollbar-track {
-    background: #743188; /* Cor do fundo da barra de rolagem */
+    background: #743188; 
 }

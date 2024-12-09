@@ -18,15 +18,14 @@ const AdmHeader = () => {
             <Link to="/admin/addMine" className={s.addMine}><li>Adicionar mina</li></Link>
             <Link to="/admin/addManager" className={s.addMine}><li>Adicionar gerenciador</li></Link>
             <Dropdown>
-                  <Dropdown.Toggle>
-                    
-                    <FontAwesomeIcon icon={faUser} />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="/manager/account">Minha Conta</Dropdown.Item>
-                    <Dropdown.Item onClick={signOut}>Sair</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>  
+              <Dropdown.Toggle variant="link" className="text-light p-0 border-0">
+                <FontAwesomeIcon icon={faUser} size="lg" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu align="end">
+                <Dropdown.Item href="/manager/account">Minha Conta</Dropdown.Item>
+                <Dropdown.Item onClick={signOut}>Sair</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
         </ul>
       </nav>
     </header>

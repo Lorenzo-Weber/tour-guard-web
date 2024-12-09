@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import s from "./UpdateMine.module.css"; // Importando o módulo CSS
 import Header from "../../../components/AdmHeader";
 import api from "../../../services/api";
-import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateMine = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,6 @@ const UpdateMine = () => {
   const [qrCode, setQrCode] = useState("");
 
   const { id } = useParams();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +30,6 @@ const UpdateMine = () => {
         setType(data.type);
 
         const response = await api.get(`/admin/manager/${data.admin_id}`);
-
         setManager(response.data.user);
 
         console.log(data);
@@ -41,7 +40,7 @@ const UpdateMine = () => {
     loadData();
   }, [id]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const model = {
@@ -55,8 +54,7 @@ const UpdateMine = () => {
     };
 
     try {
-      api.put(`/admin/mines/${id}`, model);
-
+      await api.put(`/admin/mines/${id}`, model);
       navigate("/admin");
     } catch (err) {
       console.error(err);
@@ -66,87 +64,92 @@ const UpdateMine = () => {
   return (
     <div>
       <Header />
-      <div className={s.body}>
-        <form className={s.formContainer} onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Nome da Mina:</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="location">Localização:</label>
-            <input
-              id="location"
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="facebook">Facebook:</label>
-            <input
-              id="facebook"
-              type="text"
-              value={facebook}
-              onChange={(e) => setFacebook(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="instagram">Instagram:</label>
-            <input
-              id="instagram"
-              type="text"
-              value={instagram}
-              onChange={(e) => setInstagram(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="type">Tipo de Mina:</label>
-            <input
-              id="type"
-              type="text"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              required
-            />
-          </div>
-          {/* <div>
-            <label htmlFor="manager">Gerente:</label>
-            <input
-              id="manager"
-              type="text"
-              value={manager?.full_name}
-              onChange={(e) => setManager(e.target.value)}
-              required
-            />
-          </div> */}
-          <div>
-            <label htmlFor="description">Descrição:</label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="qrCode">QR Code:</label>
-            <input
-              id="qrCode"
-              type="text"
-              value={qrCode}
-              onChange={(e) => setQrCode(e.target.value)}
-            />
-          </div>
-          <button type="submit">Atualizar Mina</button>
-        </form>
-      </div>
+      <Container className="py-4">
+        <h1>Atualizar Mina</h1>
+        <Row>
+          <Col md={8} className="mx-auto">
+            <Form className={s.formContainer} onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Nome da Mina:</Form.Label>
+                <Form.Control
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Localização:</Form.Label>
+                <Form.Control
+                  id="location"
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Facebook:</Form.Label>
+                <Form.Control
+                  id="facebook"
+                  type="text"
+                  value={facebook}
+                  onChange={(e) => setFacebook(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Instagram:</Form.Label>
+                <Form.Control
+                  id="instagram"
+                  type="text"
+                  value={instagram}
+                  onChange={(e) => setInstagram(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Tipo de Mina:</Form.Label>
+                <Form.Control
+                  id="type"
+                  type="text"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Descrição:</Form.Label>
+                <Form.Control
+                  id="description"
+                  as="textarea"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>QR Code:</Form.Label>
+                <Form.Control
+                  id="qrCode"
+                  type="text"
+                  value={qrCode}
+                  onChange={(e) => setQrCode(e.target.value)}
+                />
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Atualizar Mina
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

@@ -49,7 +49,6 @@
     justify-content: center;
     width: 100%;
     height: 100vh; /* Alterado para usar 100% da altura da tela */
-    background-color: #222; /* Fundo escuro para a página */
   }
   
   .messageInput {

@@ -1,32 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./ManagerHeader.module.css";
-import logo from "../assets/logo.png";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "react-bootstrap";
 import { useAuth } from "../Hooks/AuthContext";
+import logo from "../assets/logo.png";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ManagerHeader = () => {
   const { signOut } = useAuth();
 
   return (
     <header>
-      <nav>
-        <Link to="/landing">
-          <img src={logo} className={styles.logo} alt="" />
-        </Link>
-        <ul>
-          <Dropdown>
-            <Dropdown.Toggle>
-              <FontAwesomeIcon icon={faUser} />
-            </Dropdown.Toggle>
-            <Dropdown.Menu style={{ position: "relative" }}>
-              <Dropdown.Item href="/manager/account">Minha Conta</Dropdown.Item>
-              <Dropdown.Item onClick={signOut}>Sair</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </ul>
+      <nav className="container">
+        <div className="row align-items-center">
+          <div className="col-6 col-md-8">
+            <Link to="/manager">
+              <img src={logo} className="img-fluid" alt="Logo" />
+            </Link>
+          </div>
+          <div className="col-6 col-md-4 text-end">
+            <Dropdown>
+              <Dropdown.Toggle variant="link" id="dropdown-custom-components">
+                <FontAwesomeIcon icon={faUser} />
+              </Dropdown.Toggle>
+              <Dropdown.Menu align="end">
+                <Dropdown.Item href="/manager/account">Minha Conta</Dropdown.Item>
+                <Dropdown.Item onClick={signOut}>Sair</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </div>
       </nav>
     </header>
   );

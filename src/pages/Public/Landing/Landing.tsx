@@ -1,26 +1,35 @@
 import React from 'react';
 import Header from '../../../components/Header';
-import s from './Landing.module.css';
-import landing from "../../../assets/landing.png"
+import landing from "../../../assets/landing.png";
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
-        <div>
-            {<Header />}
-            <div className={s.body}>
-                <div className={s.panel}>
-                    <div className={s.column}>
-                        <h1>
-                            <span className={s.title_style}>Bem-vindo à Tour Guard</span>  – tecnologia avançada em monitoramento de minas históricas, garantindo uma experiência turística segura, informativa e inesquecível.
+        <div style={{overflow: 'hidden'}}>
+            <Header />
+            <div className="container-fluid vh-100 d-flex align-items-center">
+                <div className="row w-100">
+                    {/* Coluna do texto */}
+                    <div className="col-md-6 d-flex flex-column justify-content-center align-items-start px-5">
+                        <h1 className="mb-4">
+                            <span className="border-bottom border-primary">
+                                Bem-vindo à Tour Guard
+                            </span> – tecnologia avançada em monitoramento de minas históricas, garantindo uma experiência turística segura, informativa e inesquecível.
                         </h1>
                         <div>
-                            <Link to="/contato" className={s.button}>Peça Orçamento</Link>
-                            <Link to="/sobre" className={s.button}>Saiba mais</Link>
+                            <Link to="/contato" className="btn btn-primary me-2">
+                                Peça Orçamento
+                            </Link>
+                            <Link to="/sobre" className="btn btn-outline-primary">
+                                Saiba mais
+                            </Link>
                         </div>
                     </div>
+                    {/* Coluna da imagem */}
+                    <div className="col-md-6 d-flex justify-content-center align-items-center">
+                        <img src={landing} alt="Landing" className="img-fluid" style={{ maxHeight: '60vh', borderRadius: '15px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }} />
+                    </div>
                 </div>
-                <div className={s.panel}><img src={landing} alt="" /></div>
             </div>
         </div>
     );

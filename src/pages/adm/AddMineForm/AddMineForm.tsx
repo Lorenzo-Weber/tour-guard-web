@@ -4,8 +4,26 @@ import Header from "../../../components/AdmHeader";
 import api from "../../../services/api";
 import { useNavigate } from "react-router-dom";
 
+interface IForm {
+  admin_id: number;
+  name: string;
+  type: string;
+  location: string;
+  description: string;
+  qr_code: string;
+  instagram: string;
+  facebook: string;
+}
+
+interface IManager {
+  user_id: number;
+  user: {
+    full_name: string;
+  };
+}
+
 function AddMineForm() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<IForm>({
     admin_id: 0,
     name: "",
     type: "carvao",
@@ -16,7 +34,7 @@ function AddMineForm() {
     facebook: "",
   });
 
-  const [managers, setManagers] = useState<any[]>([]);
+  const [managers, setManagers] = useState<IManager[]>([]);
 
   const navigate = useNavigate();
 
@@ -26,13 +44,13 @@ function AddMineForm() {
         const { data } = await api.get("/admin/manager");
         setManagers(data);
       } catch (error) {
-        console.error(error);
+        console.error("Erro ao carregar gerentes:", error);
       }
     }
     loadManagers();
   }, []);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm({
       ...form,
@@ -40,7 +58,7 @@ function AddMineForm() {
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Dados da mina:", form);
 
@@ -48,7 +66,7 @@ function AddMineForm() {
       await api.post("/admin/mines", form);
       navigate("/admin");
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao adicionar mina:", error);
     }
   };
 
@@ -86,10 +104,9 @@ function AddMineForm() {
           <div className={s.formGroup}>
             <label className={s.label}>Gerente:</label>
             <select
-              name="manager_id"
-              onChange={(e) =>
-                setForm({ ...form, admin_id: parseInt(e.target.value) })
-              }
+              name="admin_id" // Corrigir para o campo correto (admin_id ou manager_id)
+              value={form.admin_id}
+              onChange={handleChange}
               required
               className={s.inputField}
             >
@@ -152,11 +169,7 @@ function AddMineForm() {
               className={s.inputField}
             />
           </div>
-          <button
-            type="submit"
-            onClick={(e) => handleSubmit(e)}
-            className={s.submitButton}
-          >
+          <button type="submit" className={s.submitButton}>
             Adicionar Mina
           </button>
         </form>

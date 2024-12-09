@@ -30,41 +30,46 @@ const AddManager = () => {
   return (
     <div>
       <Header />
-      <div className={s.body}>
-        <form className={s.formContainer}>
-          <div>
-            <label htmlFor="name">Nome do Gerente:</label>
+      <div className={`container ${s.body}`}>
+        <form className={`row g-3 ${s.formContainer}`}>
+          <div className="col-md-6">
+            <label htmlFor="name" className="form-label">Nome do Gerente:</label>
             <input
               id="name"
               type="text"
+              className={`form-control ${s.input}`}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className="col-md-6">
+            <label htmlFor="email" className="form-label">Email:</label>
             <input
               id="email"
               type="email"
+              className={`form-control ${s.input}`}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label htmlFor="password">Senha:</label>
+          <div className="col-md-6">
+            <label htmlFor="password" className="form-label">Senha:</label>
             <input
               id="password"
               type="password"
+              className={`form-control ${s.input}`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
-            Cadastrar Gerente
-          </button>
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
+              Cadastrar Gerente
+            </button>
+          </div>
         </form>
       </div>
     </div>

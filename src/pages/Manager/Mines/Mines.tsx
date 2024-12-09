@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Header from "../../../components/Header";
 import api from "../../../services/api";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 const Mines: React.FC = () => {
-  const [mines, setMines] = useState<any>();
+  const [mines, setMines] = useState<any[]>([]);
 
   useEffect(() => {
     async function loadMines() {
@@ -12,7 +12,7 @@ const Mines: React.FC = () => {
         const { data } = await api.get("/manager/mines");
         console.log(data);
 
-        setMines(data.mines);
+        setMines(data.mines || []);
       } catch (err) {
         console.error(err);
       }
@@ -25,15 +25,21 @@ const Mines: React.FC = () => {
     <div>
       <Header />
 
-      {/* container com listagem das minas em cards */}
-      <Container>
-        <Row>
-          {mines?.map((mine: any) => (
-            <div key={mine.id}>
-              <h1>{mine.name}</h1>
-              <p>{mine.description}</p>
-              <p>{mine.location}</p>
-            </div>
+      {/* Container com listagem das minas em cards */}
+      <Container className="py-4">
+        <Row className="g-4">
+          {mines.map((mine: any) => (
+            <Col key={mine.id} sm={12} md={6} lg={4}>
+              <Card className="h-100 shadow-sm">
+                <Card.Body>
+                  <Card.Title>{mine.name}</Card.Title>
+                  <Card.Text>{mine.description}</Card.Text>
+                  <Card.Text>
+                    <strong>Localização:</strong> {mine.location}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
         </Row>
       </Container>
