@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/Header";
 import api from "../../../services/api";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import ManagerHeader from "../../../components/ManagerHeader";
 
 const Mines: React.FC = () => {
   const [mines, setMines] = useState<any[]>([]);
@@ -23,10 +23,11 @@ const Mines: React.FC = () => {
 
   return (
     <div>
-      <Header />
+      <ManagerHeader />
 
       {/* Container com listagem das minas em cards */}
       <Container className="py-4">
+        <h1 className="mb-4">Suas Minas</h1>
         <Row className="g-4">
           {mines.map((mine: any) => (
             <Col key={mine.id} sm={12} md={6} lg={4}>
@@ -37,6 +38,9 @@ const Mines: React.FC = () => {
                   <Card.Text>
                     <strong>Localização:</strong> {mine.location}
                   </Card.Text>
+                  <Button href={`/manager/mines/${mine.id}`}>
+                    Mais informações
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
