@@ -35,6 +35,7 @@ const HomeManager: React.FC = () => {
                     <Button 
                       variant="primary" 
                       onClick={() => navigate("/manager/Dashboard")}
+                      style={{background:"blueviolet", color:"aliceblue", border:"none"}}
                     >
                       Ir para Dashboard
                     </Button>
