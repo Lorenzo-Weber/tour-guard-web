@@ -36,7 +36,7 @@ const Contato = () => {
                   id="nome"
                   name="nome"
                   placeholder="Digite seu nome"
-                  className="form-control input-custom"
+                  className="form-control input-custom bg-white text-dark"
                   value={formData.nome}
                   onChange={handleChange}
                   required
@@ -49,7 +49,7 @@ const Contato = () => {
                   id="email"
                   name="email"
                   placeholder="Digite seu email"
-                  className="form-control input-custom"
+                  className="form-control input-custom bg-white text-dark"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -61,13 +61,13 @@ const Contato = () => {
                   id="mensagem"
                   name="mensagem"
                   placeholder="Digite sua mensagem"
-                  className="form-control input-custom"
+                  className="form-control input-custom bg-white text-dark"
                   value={formData.mensagem}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button type="submit" className="btn w-100" style={{background: "blueviolet", color:"aliceblue"}}>
                 Peça seu orçamento
               </button>
             </form>

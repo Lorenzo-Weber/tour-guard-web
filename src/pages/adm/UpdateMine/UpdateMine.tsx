@@ -77,6 +77,7 @@ const UpdateMine = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -88,6 +89,7 @@ const UpdateMine = () => {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   required
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -98,6 +100,7 @@ const UpdateMine = () => {
                   type="text"
                   value={facebook}
                   onChange={(e) => setFacebook(e.target.value)}
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -108,6 +111,7 @@ const UpdateMine = () => {
                   type="text"
                   value={instagram}
                   onChange={(e) => setInstagram(e.target.value)}
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -119,6 +123,7 @@ const UpdateMine = () => {
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   required
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -130,6 +135,7 @@ const UpdateMine = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 
@@ -140,6 +146,7 @@ const UpdateMine = () => {
                   type="text"
                   value={qrCode}
                   onChange={(e) => setQrCode(e.target.value)}
+                  className="bg-white text-dark"
                 />
               </Form.Group>
 

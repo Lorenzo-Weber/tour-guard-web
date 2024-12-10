@@ -17,15 +17,14 @@ const Landing = () => {
                             </span> – tecnologia avançada em monitoramento de minas históricas, garantindo uma experiência turística segura, informativa e inesquecível.
                         </h1>
                         <div>
-                            <Link to="/contato" className="btn btn-primary me-2">
+                            <Link to="/contato" className="btn me-2" style={{backgroundColor:"blueviolet", color:"aliceblue"}}>
                                 Peça Orçamento
                             </Link>
-                            <Link to="/sobre" className="btn btn-outline-primary">
+                            <Link to="/sobre" className="btn" style={{background:"darkviolet", color:"aliceblue"}}>
                                 Saiba mais
                             </Link>
                         </div>
                     </div>
-                    {/* Coluna da imagem */}
                     <div className="col-md-6 d-flex justify-content-center align-items-center">
                         <img src={landing} alt="Landing" className="img-fluid" style={{ maxHeight: '60vh', borderRadius: '15px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }} />
                     </div>

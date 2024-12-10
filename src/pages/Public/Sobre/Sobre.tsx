@@ -36,7 +36,7 @@ const Sobre = () => {
                 <div className="row">
                     <div className="col-12 text-center">
                         <Link to="/contato">
-                            <h1 className="text-primary">Junte-se a nós</h1>
+                            <h1 style={{color:"blueviolet"}}>Junte-se a nós</h1>
                         </Link>
                     </div>
                     <div className="col-12">

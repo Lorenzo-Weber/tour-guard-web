@@ -21,9 +21,10 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="d-flex flex-column vh-100">
-        <div className="container d-flex align-items-center justify-content-center flex-grow-1">
+      <div className="d-flex flex-column vh-90"> {/* Ajuste para garantir a altura total da tela */}
+        <div className="container d-flex align-items-center justify-content-center flex-grow-1 mt-5"> {/* Margem superior para afastar do cabeçalho */}
           <div className="" style={{ maxWidth: '600px', width: '100%' }}>
+            <h2 className="mb-4 text-center">Login</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email:</label>
@@ -32,7 +33,7 @@ const Login = () => {
                   id="email"
                   name="email"
                   placeholder="Digite seu email"
-                  className="form-control"
+                  className="form-control bg-white text-dark"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -45,13 +46,13 @@ const Login = () => {
                   placeholder="Digite sua senha"
                   id="password"
                   name="password"
-                  className="form-control"
+                  className="form-control bg-white text-dark"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button type="submit" className="btn w-100" style={{background:"blueviolet", color:"aliceblue"}}>
                 Fazer Login
               </button>
             </form>

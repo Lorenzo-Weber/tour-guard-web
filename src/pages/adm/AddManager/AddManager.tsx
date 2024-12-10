@@ -37,7 +37,7 @@ const AddManager = () => {
             <input
               id="name"
               type="text"
-              className={`form-control ${s.input}`}
+              className={`form-control bg-white text-dark`}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -48,7 +48,7 @@ const AddManager = () => {
             <input
               id="email"
               type="email"
-              className={`form-control ${s.input}`}
+              className={`form-control bg-white text-dark`}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -59,7 +59,7 @@ const AddManager = () => {
             <input
               id="password"
               type="password"
-              className={`form-control ${s.input}`}
+              className={`form-control bg-white text-dark`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

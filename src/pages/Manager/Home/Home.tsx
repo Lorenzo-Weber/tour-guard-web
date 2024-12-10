@@ -1,11 +1,13 @@
 import Header from "../../../components/ManagerHeader";
 import { useMockup } from "../../../Hooks/MockupContext";
 import { useUser } from "../../../Hooks/UserContext";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const HomeManager: React.FC = () => {
   const { fullest } = useMockup();
   const { user } = useUser();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -26,6 +28,16 @@ const HomeManager: React.FC = () => {
                   <Col>
                     <h2>Quantidade</h2>
                     <h2>{fullest}</h2>
+                  </Col>
+                </Row>
+                <Row className="mt-4">
+                  <Col>
+                    <Button 
+                      variant="primary" 
+                      onClick={() => navigate("/manager/Dashboard")}
+                    >
+                      Ir para Dashboard
+                    </Button>
                   </Col>
                 </Row>
               </Card.Body>
