@@ -15,6 +15,9 @@ import { useAuth } from "../Hooks/AuthContext";
 import { ROLE } from "./roles";
 import AddMineForm from "../pages/adm/AddMineForm/AddMineForm";
 import Mines from "../pages/Manager/Mines/Mines";
+import Managers from "../pages/adm/Managers/Managers";
+import EditManager from "../pages/adm/EditManager/EditManager";
+import MineInfo from "../pages/Manager/MineInfo/MineInfo";
 
 const RoutesFunction = () => {
   const managerRoutes = [
@@ -34,6 +37,10 @@ const RoutesFunction = () => {
       path: "/manager/mines",
       view: <Mines />,
     },
+    {
+      path: "/manager/mines/:id",
+      view: <MineInfo />,
+    },
   ];
 
   const admRoutes = [
@@ -52,6 +59,14 @@ const RoutesFunction = () => {
     {
       path: "/admin/addMine",
       view: <AddMineForm />,
+    },
+    {
+      path: "/admin/managers",
+      view: <Managers />,
+    },
+    {
+      path: "/admin/managers/edit/:id",
+      view: <EditManager />,
     },
   ];
 
