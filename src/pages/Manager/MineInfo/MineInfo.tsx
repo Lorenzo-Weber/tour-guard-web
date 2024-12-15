@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ManagerHeader from "../../../components/ManagerHeader";
 import { useEffect, useState } from "react";
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import api from "../../../services/api";
 
 const MineInfo = () => {
@@ -11,6 +11,8 @@ const MineInfo = () => {
   const [description, setDescription] = useState("");
 
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadMine() {
@@ -61,7 +63,7 @@ const MineInfo = () => {
     <>
       <ManagerHeader />
 
-      <Container className="my-4">
+      <Container className="m-4">
         <h1 className="text-center mb-4">Informações da Mina</h1>
 
         <Card className="mb-4 shadow-sm">
@@ -86,6 +88,38 @@ const MineInfo = () => {
               <Card.Body>
                 <Card.Title>Região {index + 1}</Card.Title>
                 <Card.Text>{region.description}</Card.Text>
+
+                <Row>
+                  <Col md={6}>
+                    <Button
+                      size="sm"
+                      variant="danger"
+                      onClick={async () => {
+                        try {
+                          await api.delete(`/manager/regions/${region.id}`);
+                          alert("Região removida com sucesso!");
+                          setRegions(regions.filter((r) => r.id !== region.id));
+                        } catch (err) {
+                          console.error(err);
+                          alert("Erro ao remover região!");
+                        }
+                      }}
+                    >
+                      Remover
+                    </Button>
+                  </Col>
+                  <Col md={6}>
+                    <Button
+                      size="sm"
+                      variant="primary"
+                      onClick={() =>
+                        navigate(`/manager/mines/${id}/regions/${region.id}`)
+                      }
+                    >
+                      Editar
+                    </Button>
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           ))}

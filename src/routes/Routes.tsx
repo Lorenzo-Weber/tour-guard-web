@@ -18,6 +18,7 @@ import Mines from "../pages/Manager/Mines/Mines";
 import Managers from "../pages/adm/Managers/Managers";
 import EditManager from "../pages/adm/EditManager/EditManager";
 import MineInfo from "../pages/Manager/MineInfo/MineInfo";
+import EditRegion from "../pages/Manager/EditRegion/EditRegion";
 
 const RoutesFunction = () => {
   const managerRoutes = [
@@ -40,6 +41,10 @@ const RoutesFunction = () => {
     {
       path: "/manager/mines/:id",
       view: <MineInfo />,
+    },
+    {
+      path: "manager/mines/:mineId/regions/:id",
+      view: <EditRegion />,
     },
   ];
 
