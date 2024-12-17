@@ -38,9 +38,23 @@ const Mines: React.FC = () => {
                   <Card.Text>
                     <strong>Localização:</strong> {mine.location}
                   </Card.Text>
-                  <Button href={`/manager/mines/${mine.id}`}>
-                    Mais informações
-                  </Button>
+                  <Row className="d-flex flex-row justify-content-between px-3">
+                    <Button
+                      style={{ width: "fit-content" }}
+                      href={`/manager/mines/${mine.id}/dashboard`}
+                      variant="primary"
+                    >
+                      Dashboard
+                    </Button>
+
+                    <Button
+                      href={`/manager/mines/${mine.id}`}
+                      variant="info"
+                      style={{ width: "fit-content" }}
+                    >
+                      Informações
+                    </Button>
+                  </Row>
                 </Card.Body>
               </Card>
             </Col>
