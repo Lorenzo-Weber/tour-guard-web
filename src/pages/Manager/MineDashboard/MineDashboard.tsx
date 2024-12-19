@@ -12,6 +12,8 @@ interface Region {
   id: number;
   name: string;
   maxLoad: number;
+  currentLoad: number;
+  description: string;
 }
 
 interface Mine {
@@ -23,7 +25,6 @@ interface Mine {
 const MineDashboard: React.FC = () => {
   const [mine, setMine] = useState<Mine | null>(null);
   const [regions, setRegions] = useState<Region[]>([]);
-  const [currentLoad, setCurrentLoad] = useState<number[]>([]);
   const { id } = useParams<{ id: string }>();
 
   // Busca informações da mina
@@ -45,14 +46,18 @@ const MineDashboard: React.FC = () => {
     const loadRegions = async () => {
       try {
         const { data } = await api.get(`/manager/mines/${id}/regions`);
-        const regionsData = data.regions || [];
-        setRegions(regionsData);
+        let regionsData = data.regions || [];
 
-        // Inicializa os dados de lotação
-        const initialLoads = regionsData.map(({ maxLoad }: Region) =>
-          Math.floor(Math.random() * (maxLoad / 2))
-        );
-        setCurrentLoad(initialLoads);
+        regionsData = regionsData.map((region: Region, index: number) => {
+          const maxLoad = Math.floor(Math.random() * 100) + 500; // Lotação máxima aleatória
+          return {
+            ...region,
+            maxLoad: maxLoad,
+            currentLoad: Math.floor(Math.random() * maxLoad), // Lotação atual aleatória,
+          };
+        });
+
+        setRegions(regionsData);
       } catch (err) {
         console.error("Erro ao carregar regiões:", err);
       }
@@ -61,16 +66,21 @@ const MineDashboard: React.FC = () => {
     loadRegions();
   }, [id]);
 
-  // Atualiza as lotações atuais a cada 5 segundos
+  // A cada 5 segundos, atualiza a lotação atual das regiões, em um range de 15% para mais ou para menos
+  // verificando se a lotação atual não ultrapassa o intervalo de 0 até a lotação máxima
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentLoad((prevLoads) =>
-        prevLoads.map((load, index) => {
-          const change = Math.floor(Math.random() * 7) - 3; // Incremento aleatório entre -3 e 3
-          const updatedLoad = load + change;
-          return Math.max(0, Math.min(updatedLoad, regions[index]?.maxLoad || 0)); // Garante que está no intervalo válido
-        })
-      );
+      setRegions((prevRegions) => {
+        return prevRegions.map((region) => {
+          const loadVariation = Math.floor(Math.random() * 30) - 15;
+          const newLoad = region.currentLoad + loadVariation;
+
+          return {
+            ...region,
+            currentLoad: Math.max(0, Math.min(region.maxLoad, newLoad)),
+          };
+        });
+      });
     }, 5000);
 
     return () => clearInterval(interval);
@@ -80,17 +90,19 @@ const MineDashboard: React.FC = () => {
     <div>
       <ManagerHeader />
       <Container className="mt-4">
-        <h2 className="text-center mb-4">{mine?.name || "Dashboard da Mina"}</h2>
+        <h2 className="text-center mb-4">
+          {mine?.name || "Dashboard da Mina"}
+        </h2>
         <Row>
           {regions.map((region, index) => {
-            const load = currentLoad[index] || 0;
-            const available = region.maxLoad - load;
-
             const data = {
               labels: ["Ocupado", "Disponível"],
               datasets: [
                 {
-                  data: [load, available],
+                  data: [
+                    region.currentLoad,
+                    region.maxLoad - region.currentLoad,
+                  ],
                   backgroundColor: ["#FF6384", "#36A2EB"],
                   hoverBackgroundColor: ["#FF6384", "#36A2EB"],
                 },
@@ -108,7 +120,17 @@ const MineDashboard: React.FC = () => {
               >
                 <Card className="h-100">
                   <Card.Body>
-                    <Card.Title className="text-center">{region.name}</Card.Title>
+                    <Card.Title className="text-center">
+                      Região {index + 1}
+                    </Card.Title>
+                    <Card.Text className="text-center">
+                      {region.description}
+                    </Card.Text>
+
+                    <div className="text-center">
+                      <strong>Lotação atual:</strong> {region.currentLoad} /{" "}
+                      {region.maxLoad}
+                    </div>
                     <div
                       style={{
                         height: "200px",

@@ -5,7 +5,6 @@ import Landing from "../pages/Public/Landing/Landing";
 import Contato from "../pages/Public/Contato/Contato";
 import Sobre from "../pages/Public/Sobre/Sobre";
 
-import HomeManager from "../pages/Manager/Home/Home";
 import DashboardManager from "../pages/Manager/Dashboard/Dashboard";
 import InfoManager from "../pages/adm/infoManager/infoManager";
 import AddManager from "../pages/adm/AddManager/AddManager";
@@ -25,7 +24,7 @@ const RoutesFunction = () => {
   const managerRoutes = [
     {
       path: "/manager",
-      view: <HomeManager />,
+      view: <Mines />,
     },
     {
       path: "/manager/dashboard",
